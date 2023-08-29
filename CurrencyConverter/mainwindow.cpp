@@ -11,16 +11,12 @@ MainWindow::MainWindow(QWidget *parent)
     HttpRequest httpRequest;
 
     std::string url = "https://api.exchangerate.host/symbols";
-    std::string response;
+    nlohmann::json response = httpRequest.makeGetRequest(url);
 
-    bool success = httpRequest.makeGetRequest(url, response);
-
-    if (success) {
+    if (!response.empty()) {
         //std::cout << "Request successful! Response:\n" << response << std::endl;
 
-        nlohmann::json data = nlohmann::json::parse(response);
-
-        for (const auto& [key, value] : data["symbols"].items()) {
+        for (const auto& [key, value] : response["symbols"].items()) {
             std::cout << "Key: " << key << ", Value: " << value << std::endl;
             ui->fromBox->addItem(QString::fromStdString(key));
             ui->toBox->addItem(QString::fromStdString(key));

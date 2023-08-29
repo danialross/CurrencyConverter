@@ -59,10 +59,10 @@ public:
         input->setGeometry(QRect(30, 140, 131, 21));
         convertButton = new QPushButton(centralwidget);
         convertButton->setObjectName("convertButton");
-        convertButton->setGeometry(QRect(160, 220, 91, 32));
+        convertButton->setGeometry(QRect(160, 240, 91, 32));
         swapButton = new QPushButton(centralwidget);
         swapButton->setObjectName("swapButton");
-        swapButton->setGeometry(QRect(180, 180, 51, 32));
+        swapButton->setGeometry(QRect(180, 200, 51, 32));
         toLabel = new QLabel(centralwidget);
         toLabel->setObjectName("toLabel");
         toLabel->setGeometry(QRect(300, 60, 41, 16));

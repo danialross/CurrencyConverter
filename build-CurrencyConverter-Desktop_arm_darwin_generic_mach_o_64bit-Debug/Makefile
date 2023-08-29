@@ -1078,7 +1078,8 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 
 ####### Compile
 
-httprequest.o: ../CurrencyConverter/httprequest.cpp ../CurrencyConverter/httprequest.h
+httprequest.o: ../CurrencyConverter/httprequest.cpp ../CurrencyConverter/httprequest.h \
+		../CurrencyConverter/nlohmann/json.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o httprequest.o ../CurrencyConverter/httprequest.cpp
 
 main.o: ../CurrencyConverter/main.cpp ../CurrencyConverter/mainwindow.h \
