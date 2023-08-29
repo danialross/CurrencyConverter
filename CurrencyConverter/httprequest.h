@@ -1,8 +1,10 @@
 #ifndef HTTPREQUEST_H
 #define HTTPREQUEST_H
 
+#include <iostream>
 #include <string>
 #include <curl/curl.h>
+#include <nlohmann/json.hpp>
 
 class HttpRequest
 {
@@ -11,7 +13,7 @@ public:
 
     ~HttpRequest();
 
-    bool makeGetRequest(const std::string& url, std::string& response);
+    nlohmann::json makeGetRequest(const std::string& url);
 
 private:
     CURL* curl;

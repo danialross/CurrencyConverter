@@ -12,17 +12,31 @@ HttpRequest::~HttpRequest() {
     curl_global_cleanup();
 }
 
-bool HttpRequest::makeGetRequest(const std::string& url, std::string& response) {
+nlohmann::json HttpRequest::makeGetRequest(const std::string& url) {
+    nlohmann::json responseJson;
+
     if (!curl) {
-        return false;
+        return responseJson;;
     }
 
+    std::string response;
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
 
     CURLcode res = curl_easy_perform(curl);
-    return res == CURLE_OK;
+
+    if (res == CURLE_OK) {
+        try {
+            responseJson = nlohmann::json::parse(response);
+        } catch (const nlohmann::json::parse_error& e) {
+            std::cerr << "JSON parsing error: " << e.what() << std::endl;
+        }
+    } else {
+        std::cerr << "HTTP request failed: " << curl_easy_strerror(res) << std::endl;
+    }
+
+    return responseJson;
 }
 
 size_t HttpRequest::WriteCallback(void* contents, size_t size, size_t nmemb, void* userp) {
