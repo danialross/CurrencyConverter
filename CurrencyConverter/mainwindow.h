@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <iostream>
+#include <fstream>
+#include <nlohmann/json.hpp>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

@@ -12,10 +12,6 @@ CONFIG += c++17
 INCLUDEPATH += /usr/bin/curl
 LIBS += -lcurl
 
-
-DESTDIR = /Users/danialross/Documents/GitHub/CurrencyConverter
-
-
 SOURCES += \
     httprequest.cpp \
     main.cpp \
