@@ -8,11 +8,21 @@ CONFIG += c++17
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+# Add libcurl configurations
+INCLUDEPATH += /usr/bin/curl
+LIBS += -lcurl
+
+
+DESTDIR = /Users/danialross/Documents/GitHub/CurrencyConverter
+
+
 SOURCES += \
+    httprequest.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    httprequest.h \
     mainwindow.h
 
 FORMS += \
