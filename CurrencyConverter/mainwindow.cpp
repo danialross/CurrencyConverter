@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "httprequest.h"
+#include <QValidator>
+#include <QRegularExpression>
+#include <QRegularExpressionValidator>>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -24,9 +27,19 @@ MainWindow::MainWindow(QWidget *parent)
 
     } else {
         std::cout << "Request failed." << std::endl;
-
-
     }
+
+    // validator to make sure the line edit only has numbers
+    QLineEdit* lineEdit = new QLineEdit(ui->input);
+
+    // Create a regular expression that allows only digits (0-9) an optional . then
+    QRegularExpression rx("[0-9]*\\.?[0-9]+");
+
+    // Create a validator with the regular expression
+    QValidator* validator = new QRegularExpressionValidator(rx, lineEdit);
+
+    // Set the validator for the QLineEdit
+    lineEdit->setValidator(validator);
 
 
 }

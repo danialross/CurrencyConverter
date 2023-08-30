@@ -1,11 +1,13 @@
-#pragma once
 /********************************************************************************
-** Form generated from reading UI file ''
+** Form generated from reading UI file 'mainwindow.ui'
 **
 ** Created by: Qt User Interface Compiler version 6.5.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
+
+#ifndef UI_MAINWINDOW_H
+#define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -74,7 +76,7 @@ public:
         toBox->setObjectName("toBox");
         toBox->setGeometry(QRect(240, 90, 151, 32));
         moneyLabel2 = new QLabel(centralwidget);
-        moneyLabel2->setObjectName("label");
+        moneyLabel2->setObjectName("moneyLabel2");
         moneyLabel2->setGeometry(QRect(240, 140, 16, 16));
         moneyLabel = new QLabel(centralwidget);
         moneyLabel->setObjectName("moneyLabel");
@@ -113,3 +115,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
+#endif // UI_MAINWINDOW_H
