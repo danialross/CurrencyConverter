@@ -21,6 +21,8 @@ public:
 private slots:
     void on_swapButton_clicked();
 
+    void on_convertButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
