@@ -81,6 +81,7 @@ void MainWindow::on_convertButton_clicked()
         std::cout << from << std::endl;
         std::cout << to << std::endl;
         std::cout <<"rate : " << response["info"]["rate"] << std::endl;
+        std::cout << input << std::endl;
 
     }
 }
