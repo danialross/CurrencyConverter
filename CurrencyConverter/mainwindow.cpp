@@ -39,8 +39,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_swapButton_clicked()
 {
-    std::cout << ui->fromBox->currentIndex() << std::endl;
-    std::cout << ui->toBox->currentIndex() << std::endl;
 
     int from = ui->fromBox->currentIndex();
     int to = ui->toBox->currentIndex();
@@ -67,7 +65,9 @@ void MainWindow::on_convertButton_clicked()
 
         ui->output->setText(QString::number(input * (double) response["info"]["rate"]));
 
-        //std::cout << url << std::endl;
+        std::cout << from << std::endl;
+        std::cout << to << std::endl;
+        std::cout <<"rate : " << response["info"]["rate"] << std::endl;
 
     }
 }
