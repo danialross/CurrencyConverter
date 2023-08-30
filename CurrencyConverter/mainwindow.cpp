@@ -36,3 +36,17 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+void MainWindow::on_swapButton_clicked()
+{
+    if(ui->fromBox->currentIndex() != -1 && ui->toBox->currentIndex() != -1){
+
+        int from = ui->fromBox->currentIndex();
+        int to = ui->toBox->currentIndex();
+
+        ui->fromBox->setCurrentIndex(to);
+        ui->toBox->setCurrentIndex(from);
+
+    }
+}
+
