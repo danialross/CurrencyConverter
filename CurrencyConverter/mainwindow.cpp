@@ -29,17 +29,14 @@ MainWindow::MainWindow(QWidget *parent)
         std::cout << "Request failed." << std::endl;
     }
 
-    // validator to make sure the line edit only has numbers
-    QLineEdit* lineEdit = new QLineEdit(ui->input);
-
     // Create a regular expression that allows only digits (0-9) an optional . then
     QRegularExpression rx("[0-9]*\\.?[0-9]+");
 
     // Create a validator with the regular expression
-    QValidator* validator = new QRegularExpressionValidator(rx, lineEdit);
+    QValidator* validator = new QRegularExpressionValidator(rx, ui->input);
 
     // Set the validator for the QLineEdit
-    lineEdit->setValidator(validator);
+    ui->input->setValidator(validator);
 
 
 }
@@ -74,15 +71,24 @@ void MainWindow::on_convertButton_clicked()
         std::string url = "https://api.exchangerate.host/convert?from=" + from + "&to=" + to;
         nlohmann::json response = httpRequest.makeGetRequest(url);
 
-        double input = stoi(ui->input->text().toStdString());
+        if (!response.empty()) {
+            //std::cout << "Request successful! Response:\n" << response << std::endl;
 
-        ui->output->setText(QString::number(input * (double) response["info"]["rate"]));
+            double input = ui->input->text().toDouble();
+            double rate = response["info"]["rate"].get<double>();
 
-        std::cout << from << std::endl;
-        std::cout << to << std::endl;
-        std::cout <<"rate : " << response["info"]["rate"] << std::endl;
-        std::cout << input << std::endl;
+            ui->output->setText(QString::number(input * rate));
 
+            std::cout << from << std::endl;
+            std::cout << to << std::endl;
+            std::cout <<"rate : " << response["info"]["rate"] << std::endl;
+            std::cout << ui->input->text().toStdString() << std::endl;
+            std::cout << input << std::endl;
+
+        } else {
+            std::cout << "Request failed." << std::endl;
+        }
+    }else{
+        std::cout << "input is empty" << std::endl;
     }
 }
-
