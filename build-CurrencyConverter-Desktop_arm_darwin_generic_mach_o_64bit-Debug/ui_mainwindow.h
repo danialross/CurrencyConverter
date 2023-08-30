@@ -1,13 +1,11 @@
+#pragma once
 /********************************************************************************
-** Form generated from reading UI file 'mainwindow.ui'
+** Form generated from reading UI file ''
 **
 ** Created by: Qt User Interface Compiler version 6.5.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
-
-#ifndef UI_MAINWINDOW_H
-#define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -35,6 +33,8 @@ public:
     QLabel *toLabel;
     QLineEdit *output;
     QComboBox *toBox;
+    QLabel *moneyLabel2;
+    QLabel *moneyLabel;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -73,6 +73,12 @@ public:
         toBox = new QComboBox(centralwidget);
         toBox->setObjectName("toBox");
         toBox->setGeometry(QRect(240, 90, 151, 32));
+        moneyLabel2 = new QLabel(centralwidget);
+        moneyLabel2->setObjectName("label");
+        moneyLabel2->setGeometry(QRect(240, 140, 16, 16));
+        moneyLabel = new QLabel(centralwidget);
+        moneyLabel->setObjectName("moneyLabel");
+        moneyLabel->setGeometry(QRect(20, 140, 16, 16));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -95,6 +101,8 @@ public:
         convertButton->setText(QCoreApplication::translate("MainWindow", "Convert", nullptr));
         swapButton->setText(QCoreApplication::translate("MainWindow", "Swap", nullptr));
         toLabel->setText(QCoreApplication::translate("MainWindow", "To :", nullptr));
+        moneyLabel2->setText(QCoreApplication::translate("MainWindow", "$", nullptr));
+        moneyLabel->setText(QCoreApplication::translate("MainWindow", "$", nullptr));
     } // retranslateUi
 
 };
@@ -105,4 +113,3 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // UI_MAINWINDOW_H
